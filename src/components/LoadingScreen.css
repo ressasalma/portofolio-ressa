@@ -1,0 +1,143 @@
+/* ==================== LOADING SCREEN ==================== */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #FE9F99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.7s cubic-bezier(0.76, 0, 0.24, 1);
+  pointer-events: all;
+}
+
+.loading-screen--exit {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+/* Dekoratif circles */
+.loading-bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  animation: floatCircle 4s ease-in-out infinite;
+}
+
+.loading-bg-circle--1 {
+  width: 350px;
+  height: 350px;
+  top: -80px;
+  right: -80px;
+  animation-delay: 0s;
+}
+
+.loading-bg-circle--2 {
+  width: 220px;
+  height: 220px;
+  bottom: -60px;
+  left: -40px;
+  animation-delay: 1.2s;
+}
+
+.loading-bg-circle--3 {
+  width: 140px;
+  height: 140px;
+  bottom: 20%;
+  right: 10%;
+  animation-delay: 2.4s;
+  background: rgba(120, 159, 192, 0.2);
+}
+
+@keyframes floatCircle {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%       { transform: translateY(-20px) scale(1.04); }
+}
+
+/* Konten utama */
+.loading-content {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Logo huruf stagger */
+.loading-logo {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 12px;
+}
+
+.loading-logo__letter {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #fff;
+  display: inline-block;
+  animation: letterBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.loading-logo__letter:nth-child(1) { animation-delay: 0.05s; }
+.loading-logo__letter:nth-child(2) { animation-delay: 0.12s; }
+.loading-logo__letter:nth-child(3) { animation-delay: 0.19s; }
+.loading-logo__letter:nth-child(4) { animation-delay: 0.26s; }
+.loading-logo__letter:nth-child(5) { animation-delay: 0.33s; }
+
+@keyframes letterBounce {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.5);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Tagline */
+.loading-tagline {
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  animation: fadeSlideUp 0.6s 0.5s ease both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Progress bar */
+.loading-bar-wrap {
+  width: 240px;
+  height: 4px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 99px;
+  margin: 0 auto 10px;
+  overflow: hidden;
+  animation: fadeSlideUp 0.6s 0.6s ease both;
+}
+
+.loading-bar {
+  height: 100%;
+  background: #fff;
+  border-radius: 99px;
+  transition: width 0.15s ease;
+  box-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+.loading-percent {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  animation: fadeSlideUp 0.6s 0.7s ease both;
+}

@@ -1,0 +1,124 @@
+.lanyard {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  position: relative;
+  width: min(100%, 460px);
+  height: 470px;
+  margin: 0 auto;
+  overflow: visible;
+  perspective: 900px;
+}
+
+.lanyard__clamp {
+  position: absolute;
+  top: 72px;
+  left: 50%;
+  width: 90px;
+  height: 32px;
+  border: 4px solid #c9d0d6;
+  border-radius: 7px;
+  background: linear-gradient(#f7f8fa, #7b8791);
+  transform: translate(calc(-50% + var(--drag-x) * 0.35), var(--drag-y));
+  transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 3;
+}
+
+.lanyard__ring {
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  border: 5px solid #b7c0c8;
+  border-radius: 50%;
+  transform: translate(calc(-50% + var(--drag-x) * 0.35), var(--drag-y));
+  transition: transform 350ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  z-index: 4;
+}
+
+.lanyard__card {
+  position: absolute;
+  top: 105px;
+  left: 50%;
+  width: 310px;
+  height: 385px;
+  overflow: hidden;
+  border: 5px solid #dce2e7;
+  border-radius: 16px;
+  background: #15202d;
+  box-shadow: 0 22px 35px rgba(0, 0, 0, 0.35);
+  transform: translate(calc(-50% + var(--drag-x)), var(--drag-y)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y)) rotate(2deg);
+  transform-origin: top center;
+  transition: transform 180ms ease-out;
+  z-index: 2;
+}
+
+.lanyard__slot {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 48px;
+  height: 9px;
+  border-radius: 8px;
+  background: #253544;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+.lanyard__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.lanyard__shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.78));
+}
+
+.lanyard__info {
+  position: absolute;
+  right: 18px;
+  bottom: 17px;
+  left: 18px;
+  display: grid;
+  gap: 3px;
+  color: #ffffff;
+}
+
+.lanyard__info strong {
+  font-size: 1.05rem;
+}
+
+.lanyard__info span {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 575px) {
+  .lanyard {
+    height: 430px;
+  }
+
+  .lanyard__card {
+    top: 95px;
+    width: 260px;
+    height: 330px;
+  }
+
+  .lanyard__clamp {
+    top: 65px;
+  }
+
+  .lanyard__ring {
+    top: 80px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lanyard__card {
+    transition: none;
+  }
+}

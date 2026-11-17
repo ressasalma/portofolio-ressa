@@ -1,0 +1,132 @@
+.drift-wall-viewport {
+  width: 100%;
+  height: 750px;
+  display: flex;
+  gap: 20px;
+  perspective: 1000px;
+  overflow: hidden;
+  margin: 50px 0;
+  /* Top and bottom straight masking */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 15%,
+    rgba(0, 0, 0, 1) 85%,
+    transparent 100%
+  );
+}
+
+.drift-wall-track {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transform: rotate(6deg);
+  will-change: transform;
+}
+
+
+.drift-wall-track {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transform: rotate(-6deg);
+  will-change: transform;
+}
+
+.drift-wall-track--fast {
+  animation: drift-v 16s linear infinite;
+}
+
+.drift-wall-track--slow {
+  animation: drift-v 26s linear infinite reverse;
+}
+
+@keyframes drift-v {
+  0% { transform: translateY(0) rotate(-6deg); }
+  100% { transform: translateY(-50%) rotate(-6deg); }
+}
+
+.drift-wall-card {
+  flex: none;
+  width: 100%;
+  height: 180px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  opacity: 0.55;
+  filter: grayscale(0.2) blur(0.5px);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease, filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+.drift-wall-card:hover {
+  opacity: 1;
+  filter: grayscale(0) blur(0px);
+  transform: scale(1.06) translateZ(20px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.drift-wall-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.drift-wall-pdf {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.drift-wall-pdf svg {
+  width: 44px;
+  height: 44px;
+  stroke: #ffffff;
+  fill: none;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  margin-bottom: 8px;
+}
+
+.drift-wall-pdf span {
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.drift-wall-card__title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 12px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
